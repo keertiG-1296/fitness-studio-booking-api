@@ -29,19 +29,35 @@ Fitness Studio Booking API is a backend web service built using FastAPI, designe
    - uvicorn app.main:app --reload
 
 **4. API Usage example**
+    
+    
     Step 1: Create a New Class [POST/classes]
-            JSON Ex: {
+            
+            
+            JSON Ex:
+            
+            {
                         "name": "Yoga Flow",
                         "dateTime": "2025-07-10T08:00:00Z",
                         "instructor": "Keerti",
                         "availableSlots": 20
                       }
+          
+           
            cURL: curl -X POST "http://127.0.0.1:8000/classes" \
                   -H "Content-Type: application/json" \
                   -d '{"name": "Yoga Flow", "dateTime": "2025-07-10T08:00:00Z", "instructor": "Keerti", "availableSlots": 20}'
+
+  
   Step 2:  Get All Classes [GET /classes]
+            
+            
             cURL: curl "http://127.0.0.1:8000/classes"
-            Sample Response: [
+            
+            
+            Sample Response: 
+            
+            [
                                 {
                                 "id": 1,
                                "name": "Yoga Flow",
@@ -50,20 +66,40 @@ Fitness Studio Booking API is a backend web service built using FastAPI, designe
                                 "availableSlots": 20
                                }
                                 ]
+  
+   
    Step 3: Book a Class [POST /book]
-            JSON Ex: {
+            
+            
+            JSON Ex: 
+            
+            {
                       "class_id": 1,
                       "client_name": "John Doe",
                       "client_email": "john@example.com"
                     }
+            
+            
             cURL:
+                  
+                  
                   curl -X POST "http://127.0.0.1:8000/book" \
                   -H "Content-Type: application/json" \
                   -d '{"class_id": 1, "client_name": "John Doe", "client_email": "john@example.com"}'
+   
+   
    Step 4: View Bookings by Email
+          
+           
            GET /bookings?email=john@example.com
+          
+           
            cURL: curl "http://127.0.0.1:8000/bookings?email=john@example.com"
+           
+           
            Sample Response:
+                           
+                             
                              [
                                 {
                                   "id": 1,
@@ -72,7 +108,11 @@ Fitness Studio Booking API is a backend web service built using FastAPI, designe
                                   "client_email": "john@example.com"
                                 }
                               ]
+
+
 Example Error (No Available Slots)
+
+
 {
   "detail": "No slots available"
 }
